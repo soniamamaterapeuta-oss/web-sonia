@@ -185,7 +185,7 @@ footer a{margin-right:20px}
     <a class="logo" href="#inicio">Sonia Mamaterapeuta</a>
     <nav aria-label="Principal">
       <a href="#metodo">Método</a>
-      <a href="#sonia">Sobre Sonia</a>
+      <a href="#sonia" id="menu-bio">Sobre Sonia</a>
       <a class="btn" href="#puertas">Empieza aquí</a>
     </nav>
   </div>
@@ -384,20 +384,24 @@ footer a{margin-right:20px}
     <div>
       <h2>Soy Sonia.</h2>
       <p class="lead"><strong>He vivido muchas vidas dentro de una.</strong></p>
-      <p style="margin-top:20px">He pasado por muchos cambios, muchas etapas y situaciones que me obligaron a adaptarme, tomar decisiones y seguir adelante.</p>
-      <p style="margin-top:20px">Durante mucho tiempo hice lo que mejor sabía hacer: <strong>resolver.</strong></p>
+      <p style="margin-top:20px">He pasado por muchos cambios, muchas etapas y situaciones que me obligaron a adaptarme, tomar decisiones y seguir adelante. Durante mucho tiempo hice lo que mejor sabía hacer: <strong>resolver.</strong></p>
       <p style="margin-top:20px">Soy profesora de Educación Especial, terapeuta integrativa y gerente de proyectos. Tres mundos distintos, un mismo hilo: comprender lo que está pasando, encontrar soluciones y conseguir que las cosas avancen.</p>
-      <p style="margin-top:20px">Pero también soy madre de un adolescente con NEE y he vivido dos divorcios. Y esas experiencias me hicieron descubrir algo que no había aprendido en ningún curso: <strong>a veces no necesitamos resolver más. Necesitamos mirar de otra manera.</strong></p>
-      <p style="margin-top:20px">Hoy acompaño a mujeres y madres que están atravesando cambios, conflictos o situaciones que no saben cómo gestionar, para que puedan dejar de vivirlas desde el drama y empezar a abordarlas con más perspectiva, comunicación y estrategia.</p>
-      <p style="margin-top:20px">Mi formación integra educación especial, terapia integrativa, educación emocional, PNL y meditación.</p>
-      <p style="margin-top:20px">Pero mi herramienta principal es otra:</p>
-      <p class="lead" style="margin-top:12px"><strong>aprender a mirar de nuevo.</strong></p>
-      <p style="margin-top:20px">Porque muchas veces donde creemos que hay un problema, hay algo que todavía no estamos sabiendo comunicar, comprender o mirar.</p>
-      <div class="cifras" style="margin-top:36px">
+      <p style="margin-top:20px">También soy madre de un adolescente con NEE y he vivido dos divorcios. De ahí nació algo que hoy atraviesa todo mi trabajo: <strong>a veces necesitamos mirar de otra manera.</strong></p>
+      <div class="cifras" style="margin-top:30px">
         <div><b>+20</b>años de experiencia</div>
         <div><b>+2.000</b>personas acompañadas</div>
         <div><b>+300</b>alumnos formados</div>
         <div><b>+30</b>charlas y formaciones</div>
+      </div>
+      <div style="margin-top:30px"><button class="btn" type="button" id="btn-bio" aria-expanded="false" aria-controls="bio-completa">Conoce mi historia completa</button></div>
+      <div id="bio-completa" hidden style="margin-top:34px">
+        <p>Hoy acompaño a mujeres y madres que están atravesando cambios, conflictos o situaciones que no saben cómo gestionar, para que puedan abordarlas con más perspectiva, comunicación y estrategia.</p>
+        <p style="margin-top:20px">Mi formación integra educación especial, terapia integrativa, educación emocional, PNL y meditación.</p>
+        <p style="margin-top:20px">Pero mi herramienta principal es otra:</p>
+        <p class="lead" style="margin-top:12px"><strong>aprender a mirar de nuevo.</strong></p>
+        <p style="margin-top:20px">Porque muchas veces donde creemos que hay un problema, hay algo que todavía no estamos sabiendo comunicar, comprender o mirar.</p>
+        <p style="margin-top:20px"><strong>+20 años de experiencia · +2.000 personas acompañadas · +300 alumnos formados · +30 charlas y formaciones</strong></p>
+        <div style="margin-top:24px"><button class="btn" type="button" id="btn-bio-cerrar">Cerrar</button></div>
       </div>
     </div>
   </div>
@@ -425,8 +429,16 @@ footer a{margin-right:20px}
 </footer>
 
 <script>
-(function(){var b=document.getElementById('btn-mas'),p=document.getElementById('mas-testimonios');
-if(!b||!p)return;b.addEventListener('click',function(){var o=p.hidden;p.hidden=!o;b.setAttribute('aria-expanded',o);b.textContent=o?'Ver menos experiencias':'Leer más experiencias';});})();
+(function(){
+  var b=document.getElementById('btn-mas'),p=document.getElementById('mas-testimonios');
+  if(b&&p)b.addEventListener('click',function(){var o=p.hidden;p.hidden=!o;b.setAttribute('aria-expanded',o);b.textContent=o?'Ver menos experiencias':'Leer más experiencias';});
+  var bio=document.getElementById('bio-completa'),open=document.getElementById('btn-bio'),close=document.getElementById('btn-bio-cerrar'),menu=document.getElementById('menu-bio');
+  function showBio(e){if(e)e.preventDefault();bio.hidden=false;open.setAttribute('aria-expanded','true');setTimeout(function(){bio.scrollIntoView({behavior:'smooth',block:'start'});},40);}
+  function hideBio(){bio.hidden=true;open.setAttribute('aria-expanded','false');}
+  if(open&&bio)open.addEventListener('click',showBio);
+  if(close)close.addEventListener('click',hideBio);
+  if(menu)menu.addEventListener('click',function(){setTimeout(showBio,20);});
+})();
 </script>
 </body>
 </html>
